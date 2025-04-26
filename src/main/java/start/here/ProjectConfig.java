@@ -20,8 +20,8 @@ public class ProjectConfig {
     public static final String PARROT_KOKO_NAME = "Parrot Koko Bean";
     public static final String PARROT_JAKO_NAME = "Parrot Jako Bean";
 
-    //    @Bean(value = "Parrot koko bean")
-//    @Bean(name = PARROT_KOKO_NAME)
+    // @Bean(value = "Parrot koko bean")
+    // @Bean(name = PARROT_KOKO_NAME)
     @Bean(PARROT_KOKO_NAME)
     // The default bean if you didn't specify the bean name you want
     @Primary
@@ -40,32 +40,5 @@ public class ProjectConfig {
 
         System.out.printf("Parrot %s was created%n", p.getName());
         return p;
-    }
-}
-
-class Parrot {
-    private String name;
-
-    public Parrot() {
-        name = "No name provided";
-    }
-
-    public Parrot(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Parrot{" +
-                "name='" + name + '\'' +
-                '}';
     }
 }
