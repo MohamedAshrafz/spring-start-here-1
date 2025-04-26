@@ -16,6 +16,7 @@
 
     <dependencies>
 
+        <!-- The context is the base of all spring projects, there is no spring application without context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
