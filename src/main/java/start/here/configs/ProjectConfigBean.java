@@ -1,11 +1,15 @@
-package start.here;
+package start.here.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import start.here.beans.Parrot;
+
+import static start.here.beans.Parrot.PARROT_JAKO_NAME;
+import static start.here.beans.Parrot.PARROT_KOKO_NAME;
 
 @Configuration
-public class ProjectConfig {
+public class ProjectConfigBean {
 
     public enum BEAN_NAMES {
         PARROT_KOKO("Parrot Koko Bean"),
@@ -16,9 +20,6 @@ public class ProjectConfig {
             this.name = name;
         }
     }
-
-    public static final String PARROT_KOKO_NAME = "Parrot Koko Bean";
-    public static final String PARROT_JAKO_NAME = "Parrot Jako Bean";
 
     // @Bean(value = "Parrot koko bean")
     // @Bean(name = PARROT_KOKO_NAME)

@@ -1,6 +1,20 @@
-package start.here;
+package start.here.beans;
 
-class Parrot {
+import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class Parrot {
+
+    public static final String PARROT_KOKO_NAME = "Parrot Koko Bean";
+    public static final String PARROT_JAKO_NAME = "Parrot Jako Bean";
+
+    // Only needed in the stereotype annotations
+    @PostConstruct
+    void init() {
+        this.name = PARROT_JAKO_NAME;
+    }
     private String name;
 
     public Parrot() {
