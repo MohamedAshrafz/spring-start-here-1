@@ -4,17 +4,16 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 
-@Component
 public class Parrot {
 
     public static final String PARROT_KOKO_NAME = "Parrot Koko Bean";
     public static final String PARROT_JAKO_NAME = "Parrot Jako Bean";
 
     // Only needed in the stereotype annotations
-    @PostConstruct
-    void init() {
-        this.name = PARROT_JAKO_NAME;
-    }
+//    @PostConstruct
+//    void init() {
+//        this.name = "Koko";
+//    }
     private String name;
 
     public Parrot() {
@@ -36,7 +35,8 @@ public class Parrot {
     @Override
     public String toString() {
         return "Parrot{" +
-                "name='" + name + '\'' +
+                "name='" + name + "', " +
+                "hashCode='" + Integer.toHexString(hashCode()) + '\'' +
                 '}';
     }
 }
