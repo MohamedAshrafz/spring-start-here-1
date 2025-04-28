@@ -11,21 +11,7 @@ public class Parrot {
     public static final String PARROT_KOKO_NAME = "Parrot Koko Bean";
     public static final String PARROT_JAKO_NAME = "Parrot Jako Bean";
 
-////     Only needed in the stereotype annotations
-//    @PostConstruct
-//    void init() {
-//        this.name = "Koko";
-//    }
-
     private String name;
-
-    public Parrot() {
-        name = "No name provided";
-    }
-
-    public Parrot(String name) {
-        this.name = name;
-    }
 
     public void setName(String name) {
         this.name = name;

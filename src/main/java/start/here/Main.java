@@ -28,7 +28,7 @@ public class Main {
         Person person;
 
         System.out.println(parrot = context.getBean(MOMO_OWN_PARROT, Parrot.class));
-        System.out.println(person = context.getBean(Person.class));
+        System.out.println(person = context.getBean(PERSON_MOMO_NAME, Person.class));
 
         System.out.printf("Is the same parrot? %b", person.getParrot() == parrot);
 
