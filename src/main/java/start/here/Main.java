@@ -2,15 +2,19 @@ package start.here;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import start.here.beans.Parrot;
 import start.here.beans.Person;
+import start.here.beans.PersonAb;
 import start.here.configs.ProjectConfigBean;
+import start.here.configs.ProjectConfigStereotype;
 
 import java.util.function.Supplier;
 
 import static start.here.beans.Parrot.PARROT_JAKO_NAME;
 import static start.here.beans.Parrot.PARROT_KOKO_NAME;
 import static start.here.beans.Person.PERSON_MOMO_NAME;
+import static start.here.configs.ProjectConfigBean.MOMO_OWN_PARROT;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,15 +27,32 @@ public class Main {
         Parrot parrot;
         Person person;
 
-        System.out.println(parrot = context.getBean(Parrot.class));
-        System.out.println(person = context.getBean(PERSON_MOMO_NAME, Person.class));
+        System.out.println(parrot = context.getBean(MOMO_OWN_PARROT, Parrot.class));
+        System.out.println(person = context.getBean(Person.class));
 
         System.out.printf("Is the same parrot? %b", person.getParrot() == parrot);
 
 //        // Stereotype Annotation
 //        ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfigStereotype.class);
 //
-//        System.out.println(context.getBean(Parrot.class));
+//        Parrot parrot;
+//        Person person;
+//
+//        System.out.println(parrot = context.getBean(Parrot.class));
+//        System.out.println(person = context.getBean(Person.class));
+//
+//        System.out.printf("Is the same parrot? %b", person.getParrot() == parrot);
+
+//        // Lombok Stereotype Annotation
+//        ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfigStereotype.class);
+//
+//        Parrot parrot;
+//        PersonAb person;
+//
+//        System.out.println(parrot = context.getBean(Parrot.class));
+//        System.out.println(person = context.getBean(PersonAb.class));
+//
+//        System.out.printf("Is the same parrot? %b", person.getParrot() == parrot);
 
 //        // Adding a bean programmatically
 //        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
