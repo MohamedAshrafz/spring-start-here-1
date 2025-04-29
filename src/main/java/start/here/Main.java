@@ -4,7 +4,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import start.here.configs.ProjectConfigStereotype;
+import start.here.proxies.CommentNotificationProxy;
 import start.here.services.CommentService;
+
+import static start.here.proxies.EmailCommentNotificationProxy.EMAIL_NOTIFICATION_PROXY_NAME;
+import static start.here.proxies.PushCommentNotificationProxy.PUSH_NOTIFICATION_PROXY_NAME;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +16,12 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfigStereotype.class);
 
         CommentService commentService = context.getBean(CommentService.class);
+        CommentNotificationProxy commentNotificationProxy = context.getBean(PUSH_NOTIFICATION_PROXY_NAME, CommentNotificationProxy.class);
 
         commentService.submitComment("Hi there from the other side of the universe :)");
+
+        System.out.printf("is the same bean commentNotificationProxy? [%b]\n",
+                commentService.getCommentNotificationProxy() == commentNotificationProxy);
 
 
 

@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 
 import static start.here.proxies.PushCommentNotificationProxy.PUSH_NOTIFICATION_PROXY_NAME;
 
-@Component
-@Qualifier(PUSH_NOTIFICATION_PROXY_NAME)
+// Seems like you can add the name on the @Bean/@Component or on the @Qualifier
+@Component(PUSH_NOTIFICATION_PROXY_NAME)
+//@Qualifier(PUSH_NOTIFICATION_PROXY_NAME)
 public class PushCommentNotificationProxy implements CommentNotificationProxy {
 
     public static final String PUSH_NOTIFICATION_PROXY_NAME = "pushNotificationProxy";

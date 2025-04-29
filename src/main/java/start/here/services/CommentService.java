@@ -1,5 +1,6 @@
 package start.here.services;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,13 @@ import static start.here.proxies.EmailCommentNotificationProxy.EMAIL_NOTIFICATIO
 import static start.here.proxies.PushCommentNotificationProxy.PUSH_NOTIFICATION_PROXY_NAME;
 
 @Service
+@Getter
 public class CommentService {
     private final CommentRepository commentRepository;
     private final CommentNotificationProxy commentNotificationProxy;
 
     @Autowired
-    public CommentService(CommentRepository commentRepository, @Qualifier(EMAIL_NOTIFICATION_PROXY_NAME) CommentNotificationProxy commentNotificationProxy) {
+    public CommentService(CommentRepository commentRepository, @Qualifier(PUSH_NOTIFICATION_PROXY_NAME) CommentNotificationProxy commentNotificationProxy) {
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
     }
@@ -25,5 +27,13 @@ public class CommentService {
         commentNotificationProxy.sendComment(comment);
 
         System.out.printf("comment [%s] was submitted successfully\n", comment);
+    }
+
+    @Override
+    public String toString() {
+        return "CommentService{" +
+                "commentRepository=" + commentRepository +
+                ", commentNotificationProxy=" + commentNotificationProxy +
+                '}';
     }
 }
