@@ -7,9 +7,6 @@ import start.here.configs.ProjectConfigStereotype;
 import start.here.proxies.CommentNotificationProxy;
 import start.here.services.CommentService;
 
-import static start.here.proxies.EmailCommentNotificationProxy.EMAIL_NOTIFICATION_PROXY_NAME;
-import static start.here.proxies.PushCommentNotificationProxy.PUSH_NOTIFICATION_PROXY_NAME;
-
 public class Main {
     public static void main(String[] args) {
         // Bean Annotation
@@ -18,7 +15,7 @@ public class Main {
         System.out.println(":D");
 
         CommentService commentService = context.getBean(CommentService.class);
-        CommentNotificationProxy commentNotificationProxy = context.getBean(PUSH_NOTIFICATION_PROXY_NAME, CommentNotificationProxy.class);
+        CommentNotificationProxy commentNotificationProxy = context.getBean(AppUtils.CURRENT_NOTIFICATION_PROXY, CommentNotificationProxy.class);
 
         commentService.submitComment("Hi there from the other side of the universe :)");
 

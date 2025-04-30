@@ -5,11 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import start.here.AppUtils;
 import start.here.proxies.CommentNotificationProxy;
 import start.here.repositories.CommentRepository;
-
-import static start.here.proxies.EmailCommentNotificationProxy.EMAIL_NOTIFICATION_PROXY_NAME;
-import static start.here.proxies.PushCommentNotificationProxy.PUSH_NOTIFICATION_PROXY_NAME;
 
 @Service
 @Getter
@@ -19,15 +17,15 @@ public class CommentService {
     private final CommentNotificationProxy commentNotificationProxy;
 
     @Autowired
-    public CommentService(CommentRepository commentRepository, @Qualifier(PUSH_NOTIFICATION_PROXY_NAME) CommentNotificationProxy commentNotificationProxy) {
+    public CommentService(CommentRepository commentRepository, @Qualifier(AppUtils.CURRENT_NOTIFICATION_PROXY) CommentNotificationProxy commentNotificationProxy) {
         System.out.println("Start creating CommentService class.");
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         System.out.println("Finish creating CommentService class.");
     }
 
