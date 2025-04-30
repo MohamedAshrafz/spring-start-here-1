@@ -16,4 +16,8 @@ public class PushCommentNotificationProxy implements CommentNotificationProxy {
     public void sendComment(String comment) {
         System.out.printf("Comment [%s] was send by push notification\n", comment);
     }
+
+    public PushCommentNotificationProxy() {
+        System.out.println("Creating PushCommentNotificationProxy class.");
+    }
 }

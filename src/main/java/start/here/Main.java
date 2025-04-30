@@ -15,6 +15,8 @@ public class Main {
         // Bean Annotation
         ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfigStereotype.class);
 
+        System.out.println(":D");
+
         CommentService commentService = context.getBean(CommentService.class);
         CommentNotificationProxy commentNotificationProxy = context.getBean(PUSH_NOTIFICATION_PROXY_NAME, CommentNotificationProxy.class);
 

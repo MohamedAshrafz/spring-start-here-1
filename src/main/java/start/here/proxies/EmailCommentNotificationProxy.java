@@ -16,4 +16,8 @@ public class EmailCommentNotificationProxy implements CommentNotificationProxy {
     public void sendComment(String comment) {
         System.out.printf("Comment [%s] was send by Email\n", comment);
     }
+
+    public EmailCommentNotificationProxy() {
+        System.out.println("Creating EmailCommentNotificationProxy class.");
+    }
 }

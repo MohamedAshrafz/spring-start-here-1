@@ -10,4 +10,8 @@ public class DBCommentRepository implements CommentRepository {
     public void storeComment(String comment) {
         System.out.printf("Comment [%s] was saved into the DB\n", comment);
     }
+
+    public DBCommentRepository() {
+        System.out.println("Creating DBCommentRepository class.");
+    }
 }
