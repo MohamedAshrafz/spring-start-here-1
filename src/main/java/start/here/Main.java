@@ -15,9 +15,7 @@ public class Main {
 
         CommentService commentService = context.getBean(CommentService.class);
 
-        commentService.publishComment("Hi there");
         commentService.deleteComment("Hi there");
-        commentService.editComment("Hi there");
 
 
 //        // Stereotype Annotation
