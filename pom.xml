@@ -23,6 +23,13 @@
             <version>6.2.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>6.2.3</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api -->
         <dependency>
             <groupId>jakarta.annotation</groupId>

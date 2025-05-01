@@ -9,7 +9,7 @@ import start.here.BeansNames;
 // Seems like you can add the name on the @Bean/@Component or on the @Qualifier
 @Component(BeansNames.PUSH_NOTIFICATION_PROXY_NAME)
 //@Qualifier(BeansNames.PUSH_NOTIFICATION_PROXY_NAME)
-@Scope(BeanDefinition.SCOPE_PROTOTYPE) // Creates the bean in the Prototype scope instead of the default Singleton scope
+//@Scope(BeanDefinition.SCOPE_PROTOTYPE) // Creates the bean in the Prototype scope instead of the default Singleton scope
 public class PushCommentNotificationProxy implements CommentNotificationProxy {
 
     @Override

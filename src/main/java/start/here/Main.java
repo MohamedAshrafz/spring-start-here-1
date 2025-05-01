@@ -17,11 +17,10 @@ public class Main {
         CommentService commentService = context.getBean(CommentService.class);
         CommentNotificationProxy commentNotificationProxy = context.getBean(AppUtils.CURRENT_NOTIFICATION_PROXY, CommentNotificationProxy.class);
 
-        commentService.submitComment("Hi there from the other side of the universe :)");
+        System.out.printf("submitComment returned [%b]\n", commentService.submitComment("Hi there from the other side of the universe :)"));
 
         System.out.printf("is the same bean commentNotificationProxy? [%b]\n",
                 commentService.getCommentNotificationProxy() == commentNotificationProxy);
-
 
 
 //        // Stereotype Annotation
