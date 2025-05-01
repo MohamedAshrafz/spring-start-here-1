@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import start.here.AppUtils;
-import start.here.proxies.CommentNotificationProxy;
-import start.here.repositories.CommentRepository;
+import start.here.aspects.ToLog;
 
 import java.util.logging.Logger;
 
@@ -15,41 +14,23 @@ import java.util.logging.Logger;
 @Getter
 @Lazy // Will delay bean creation till when it's needed
 public class CommentService {
-    private final CommentRepository commentRepository;
-    private final CommentNotificationProxy commentNotificationProxy;
-
     private Logger logger = Logger.getLogger(CommentService.class.getName());
 
-    @Autowired
-    public CommentService(CommentRepository commentRepository, @Qualifier(AppUtils.CURRENT_NOTIFICATION_PROXY) CommentNotificationProxy commentNotificationProxy) {
-//        System.out.println("Start creating CommentService class.");
-        this.commentRepository = commentRepository;
-        this.commentNotificationProxy = commentNotificationProxy;
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//        System.out.println("Finish creating CommentService class.");
+
+    public void publishComment(String comment) {
+        logger.info("Publishing comment:" + comment);
     }
 
-    public boolean submitComment(String comment) {
-        commentRepository.storeComment(comment);
-        commentNotificationProxy.sendComment(comment);
+    @ToLog
+    public void deleteComment(String comment) {
+        logger.info("Deleting comment:" + comment);
+    }
 
-//        logger.info("submitting the comment: [" + comment + "]");
-        return false;
+    public void editComment(String comment) {
+        logger.info("Editing comment:" + comment);
     }
 
     public void setLogger(Logger logger) {
         this.logger = logger;
-    }
-
-    @Override
-    public String toString() {
-        return "CommentService{" +
-                "commentRepository=" + commentRepository +
-                ", commentNotificationProxy=" + commentNotificationProxy +
-                '}';
     }
 }

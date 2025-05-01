@@ -4,7 +4,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import start.here.configs.ProjectConfigStereotype;
-import start.here.proxies.CommentNotificationProxy;
 import start.here.services.CommentService;
 
 public class Main {
@@ -15,12 +14,10 @@ public class Main {
         System.out.println(":D");
 
         CommentService commentService = context.getBean(CommentService.class);
-        CommentNotificationProxy commentNotificationProxy = context.getBean(AppUtils.CURRENT_NOTIFICATION_PROXY, CommentNotificationProxy.class);
 
-        System.out.printf("submitComment returned [%b]\n", commentService.submitComment("Hi there from the other side of the universe :)"));
-
-        System.out.printf("is the same bean commentNotificationProxy? [%b]\n",
-                commentService.getCommentNotificationProxy() == commentNotificationProxy);
+        commentService.publishComment("Hi there");
+        commentService.deleteComment("Hi there");
+        commentService.editComment("Hi there");
 
 
 //        // Stereotype Annotation

@@ -4,6 +4,7 @@ package start.here.aspects;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -16,22 +17,24 @@ public class LoggingAspect {
 
     private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    @Around("execution(* start.here.services.CommentService.submitComment(..))")
+    @Around("@annotation(ToLog)")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
-//        logger.info("aspect log was called");
+        logger.info("aspect log was called");
 
-//        logger.info(Arrays.toString(joinPoint.getArgs()));
-//        logger.info(joinPoint.getSignature().toString());
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
 
+        logger.info("Method " + methodName + " with parameters " + Arrays.toString(args) + " will execute");
 
-        Object [] newArgs = {"hi there i hacked you :'D"};
-        // Changing the provided parameter
-        Object returnedVal = joinPoint.proceed(newArgs);
-        logger.info("The actual returned value by the method is [" + returnedVal.toString() + "]");
+        // Will return nothing, but you can keep it as nothing is still be a null object
+        Object returnedVal = joinPoint.proceed();
 
-//        logger.info("aspect log was concluded");
+        logger.info("aspect log will be finished now");
 
-        // Changing the returned value from the OG method
-        return !(boolean) returnedVal;
+        return returnedVal;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 }
